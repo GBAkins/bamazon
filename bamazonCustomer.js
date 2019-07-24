@@ -30,6 +30,7 @@ var displayItems = function(){
     })
 }
 
+//function prompting customer to select an item and a quantity to purchase
 var shopPrompt = function(res){
   inquirer.prompt([{
     type: "input",
@@ -41,21 +42,22 @@ var shopPrompt = function(res){
       if (res[i].item_id==answer.choice){
         correct=true;
         var id=answer.choice;
-        var product=res[id].product_name;
         inquirer.prompt({
           type: "input", 
           name: "quantity", 
           message: "How many of this item would you like to buy?",
-          validate: function(value){
-            if (isNan(value)==false){
+          // Checking if the answer is a number
+          validate: function(answer){
+            if(isNaN(answer)==false){
               return true;
             } else {
               return false;
             }
           }
+          // updating stock quantity after purchase
         }).then(function(answer){
-          if((res[id].stock_quantity-answer.quantity)>0){
-            connection.query("UPDATE products SET stock_quantity='"+(res[id].stock_quantity-answer.quantity)+"' WHERE product_name='"+product+"'", function(err, res2){
+          if((res[id-1].stock_quantity-answer.quantity)>=0){
+            connection.query("UPDATE products SET stock_quantity='"+(res[id-1].stock_quantity-answer.quantity)+"' WHERE item_id='"+id+"'", function(err, res){
               console.log("Thank you for your purchase.");
               displayItems();
             })
