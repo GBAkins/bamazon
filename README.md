@@ -14,3 +14,7 @@ After the app connects to your database, it will display the contents of the dat
 
 ## Demo Video
 [Bamazon CLI Storefront Using MySQL](https://youtu.be/G0DgvSOfyN4)
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=G0DgvSOfyN4
+" target="_blank"><img src="http://img.youtube.com/vi/G0DgvSOfyN4/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
